@@ -77,9 +77,9 @@ export default function ProductList() {
         	    <tr>
         	  	<th className="fw-bold">{" "}<input type="checkbox"/></th>
               
-        	  	<th>User Name</th>
-              <th>Password</th> 
-              <th>Address</th>
+        	  	<th>Name</th>
+              <th>Age</th> 
+              <th>State</th>
               <th>Phone Number</th>
               <th>Email</th>
         	  	<th>Action</th>
@@ -91,30 +91,41 @@ export default function ProductList() {
                 <td><input type="checkbox"/></td>
                 <td>
                   <span className="text-uppercase fs-1">
-                    <p>{dt?.username}</p>
+                    <p>{dt?.name?dt.name:'NA'}</p>
                   </span>
                 </td>
                 <td>
-                  <span className="text-lowercase fs-1">{dt?.password}</span>
+                  <span className="fs-1">{dt?.age?dt.age:'NA'}</span>
                 </td>  
                 <td>
-                  <span className="text-lowercase fs-1">{dt?.address}</span>
+                  <span className="fs-1">{dt?.state?dt.state:'NA'}</span>
                 </td>
                 <td>
-                  <span className="text-lowercase fs-1">{dt?.mobile}</span>
+                  <span className="fs-1">{dt?.mobile?dt.mobile:'NA'}</span>
                 </td>
                 <td>
-                  <span className="text-lowercase fs-1">{dt?.email}</span>
+                  <span className="fs-1">{dt?.email?dt.email:'NA'}</span>
                 </td>
                 <td>
-                  <button className="btn btn-default" onClick={(e)=>deletePatient(dt?._id)}>
+                  <button title="Delete" className="btn btn-default" onClick={(e)=>deletePatient(dt?._id)}>
                     <i className="fa fa-trash"></i>
                   </button>
                   {" "} 
                   {" "}
-                  <Link to={"/editpatient/"+auth?.user?.role+"/ "+auth?.user?._id+"/"+dt?._id} className="btn btn-default">
+                  <Link title="Edit" to={"/editpatient/"+auth?.user?.role+"/ "+auth?.user?._id+"/"+dt?._id} className="btn btn-default">
                     <i className="fa fa-edit"></i>
                   </Link>
+                  {" "} 
+                  {" "}
+                  <Link title="View" to={"/viewpatient/"+dt?._id} className="btn btn-default">
+                  <i className="fa fa-eye" />
+                  </Link>
+                  {" "} 
+                  {" "}
+                  {/* <Link to={"/viewpatient/"+dt?._id} className="btn btn-default">
+                  <i className="fa fa-virus" />
+                  </Link> */}
+                  
                 </td>
               </tr>
               ))}

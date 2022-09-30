@@ -27,7 +27,7 @@ export const GetMedicineAction=()=>{
 	
 	return async (dispatch)=>{
 		dispatch({type:medicineStatus.MEDICINE_GET_REQUEST});
-		const res = await axios.post(`/get-medicine/`);
+		const res = await axios.get(`/get-medicine/`);
 		console.log(res.data)
 		if(res.status===200){    
 			const medicines = res.data
@@ -37,7 +37,7 @@ export const GetMedicineAction=()=>{
 			})
 
 		}else{
-		if(res.status===201){
+		if(res.status===400){
 			dispatch({type:medicineStatus.MEDICINE_GET_FAILED});
 			console.log(res.data);
 		}

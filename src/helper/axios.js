@@ -5,7 +5,8 @@ import { authStatus } from '../action/Status';
 const token = window.localStorage.getItem('token');
 
 const axiosIntance = axios.create({
-    baseURL: "http://localhost:5000/api",
+    baseURL: "http://localhost:8080/api",
+    // baseURL:"http://3.109.121.178:8080/api",
     //baseURL: "https://api.albionline.com/api",
     
     headers: {

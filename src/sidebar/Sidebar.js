@@ -4,7 +4,8 @@ import {useSelector} from "react-redux";
 
 
 export default function Sidebar() {
-  const auth = useSelector(state=>state.auth); 
+  const auth = useSelector(state=>state?.common?.data);
+  // const auth = useSelector(state=>state.auth); 
 
 	return (
 		<div>
@@ -21,7 +22,7 @@ export default function Sidebar() {
           />
         </div>
         <div className="pull-left info">
-          <p>{auth.user.fname} {auth.user.lname}</p>
+          <p>{auth.fname} {auth.lname}</p>
           <a href="#">
             <i className="fa fa-circle text-success" /> Online
           </a>
@@ -70,13 +71,13 @@ export default function Sidebar() {
           </Link>
         </li>
 
-        <li>
+        {/* <li>
           <Link to="/vitals">
             <i className="fa fa-heartbeat" /> <span>Manage Vitals </span>
             <span className="pull-right-container">
             </span>
           </Link>
-        </li>
+        </li> */}
 
         {/* <li>
           <Link to="/users">

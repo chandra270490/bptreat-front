@@ -8,7 +8,7 @@ export const  LoginPage=(userLogin)=>{
 	 
 	return async (dispatch)=>{
 		dispatch({type:authStatus.LOGIN_REQUEST});
-		const res = await axios.post(`/login/`,userLogin);
+		const res = await axios.post(`/adminLogin/`,userLogin);
 		if(res.status===200){
             console.log(res)
 			const {token,user} = res.data; 

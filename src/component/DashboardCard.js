@@ -1,15 +1,14 @@
 import React from 'react'
-
 import {useSelector,useDispatch} from "react-redux";
 import {Link} from "react-router-dom";
 
 export default function DashboardCard() {
 
-  const auth = useSelector(state=>state.auth);
   const patientData = useSelector(state=>state?.category?.patient);
   const vitalData = useSelector(state=>state?.vital?.data);
-  const diseaseData = useSelector(state=>state?.disease?.data);
-  const medicineData = useSelector(state=>state?.medicine?.data);
+  const diseaseData = useSelector(state=>state?.disease?.data?.data);
+  const medicineData = useSelector(state=>state?.medicine?.data?.data);
+
   const dispatch = useDispatch();
 
 	return (
@@ -34,7 +33,7 @@ export default function DashboardCard() {
       <div className="row">
         <div className="col-lg-3 col-xs-6">
           {/* small box */}
-          <div className="small-box bg-aqua">
+          <div className="small-box" style={{backgroundColor: '#73cadf',color: 'white'}}>
             <div className="inner">
               <h3>{patientData?.length}</h3>
               <p>Total Patients</p>
@@ -51,16 +50,16 @@ export default function DashboardCard() {
         </div>
         <div className="col-lg-3 col-xs-6">
           {/* small box */}
-          <div className="small-box bg-green">
+          <div className="small-box" style={{backgroundColor: '#48e19b',color: 'white'}}>
             <div className="inner">
-              <h3>{vitalData?.length}</h3>
-              <p>Total Vitals</p>
+              <h3>0</h3>
+              <p>Total Prescriptions</p>
             </div>
             <div className="icon">
               <i className="ion-ios-pulse-strong" />
             </div>
             
-            <Link to="/vitals" className="small-box-footer">
+            <Link to="/home" className="small-box-footer">
               More info <i className="fa fa-arrow-circle-right" />
             </Link>
 
@@ -68,7 +67,7 @@ export default function DashboardCard() {
         </div>
         <div className="col-lg-3 col-xs-6">
           {/* small box */}
-          <div className="small-box bg-green">
+          <div className="small-box" style={{backgroundColor: '#9b96e7',color: 'white'}}>
             <div className="inner">
               <h3>{diseaseData?.length}</h3>
               <p>Total Diseases</p>
@@ -85,7 +84,7 @@ export default function DashboardCard() {
         </div>
         <div className="col-lg-3 col-xs-6">
           {/* small box */}
-          <div className="small-box bg-green">
+          <div className="small-box" style={{backgroundColor: '#d2e375',color: 'white'}}>
             <div className="inner">
               <h3>{medicineData?.length}</h3>
               <p>Total Medicines</p>
@@ -278,90 +277,7 @@ export default function DashboardCard() {
         {/* right col (We are only adding the ID to make the widgets sortable)*/}
         <section className="col-lg-5 connectedSortable">
           {/* Calendar */}
-          <div className="box box-solid bg-green-gradient">
-            <div className="box-header">
-              <i className="fa fa-calendar" />
-              <h3 className="box-title">Calendar</h3>
-              {/* tools box */}
-              <div className="pull-right box-tools">
-                {/* button with a dropdown */}
-                <div className="btn-group">
-                  <button
-                    type="button"
-                    className="btn btn-success btn-sm dropdown-toggle"
-                    data-toggle="dropdown"
-                  >
-                    <i className="fa fa-bars" />
-                  </button>
-                  <ul className="dropdown-menu pull-right" role="menu">
-                    <li>
-                      <a href="#">Add new event</a>
-                    </li>
-                    <li>
-                      <a href="#">Clear events</a>
-                    </li>
-                    <li className="divider" />
-                    <li>
-                      <a href="#">View calendar</a>
-                    </li>
-                  </ul>
-                </div>
-                <button
-                  type="button"
-                  className="btn btn-success btn-sm"
-                  data-widget="collapse"
-                >
-                  <i className="fa fa-minus" />
-                </button>
-                <button
-                  type="button"
-                  className="btn btn-success btn-sm"
-                  data-widget="remove"
-                >
-                  <i className="fa fa-times" />
-                </button>
-              </div>
-              {/* /. tools */}
-            </div>
-            {/* /.box-header */}
-            <div className="box-body no-padding">
-              {/*The calendar */}
-              <div id="calendar" style={{ width: "100%" }} />
-            </div>
-            {/* /.box-body */}
-            <div className="box-footer text-black">
-              <div className="row">
-                <div className="col-sm-6">
-                  {/* Progress bars */}
-                  <div className="clearfix">
-                    <span className="pull-left">Task #1</span>
-                    <small className="pull-right">90%</small>
-                  </div>
-                  <div className="progress xs">
-                    <div
-                      className="progress-bar progress-bar-green"
-                      style={{ width: "90%" }}
-                    />
-                  </div>
-                </div>
-                {/* /.col */}
-                <div className="col-sm-6">
-                  <div className="clearfix">
-                    <span className="pull-left">Task #2</span>
-                    <small className="pull-right">60%</small>
-                  </div>
-                  <div className="progress xs">
-                    <div
-                      className="progress-bar progress-bar-green"
-                      style={{ width: "60%" }}
-                    />
-                  </div>
-                </div>
-                {/* /.col */}
-              </div>
-              {/* /.row */}
-            </div>
-          </div>
+          
           {/* /.box */}
         </section>
         {/* right col */}

@@ -31,39 +31,43 @@ const inputsHandler = (e) =>{
  const patientData = useSelector(state=>state?.category?.patient)
 
   const [editorLoaded, setEditorLoaded] = useState(false);
-  const [username,setusername] = useState("");
+  const [name,setname] = useState("");
   const [password,setpassword] = useState("");
-  const [address,setaddress] = useState("");
+  const [state,setstate] = useState("");
   const [mobile,setmobile] = useState("");
   const [email,setemail] = useState("");
   const [age,setage] = useState("");
   const [gender,setgender] = useState("");
   const [height,setheight] = useState("");
   const [weight,setweight] = useState("");
-  const [chronic,setchronic] = useState(""); 
-  const [drug,setdrug] = useState(false);
-  const [bp,setbp] = useState(false); 
-  const [sideEffect,setsideEffect] = useState([]);
-  const [remindBPTextMsg,setremindBPTextMsg] = useState([]);
+  const [zipcode,setzipcode] = useState(""); 
+  const [diabetes,setdiabetes] = useState(Boolean);
+  const [hematocrit,sethematocrit] = useState(""); 
+  const [creatinine,setcreatinine] = useState("");
+  const [calcium,setcalcium] = useState("");
+  const [albumin,setalbumin] = useState("");
+  const [tsh,settsh] = useState("");
 
 
 const onSubmit = () => { 
    const data={
     patientId,
-    username,
+    name,
     password,
-    address,
+    state,
     mobile,
     email,
-    chronic,
+    zipcode,
     age,
     gender,
     height,
     weight,
-    drug,
-    bp,
-    sideEffect,
-    remindBPTextMsg
+    diabetes,
+    hematocrit,
+    creatinine,
+    calcium,
+    albumin,
+    tsh,
   } 
    dispatch(EditPatientAction(data));
 }
@@ -76,20 +80,22 @@ const onSubmit = () => {
     setEditorLoaded(true);
     const data = patientData.find(obj=>{return obj._id===patientId});
 
-    setusername(data?.username) 
+    setname(data?.name) 
     setpassword(data?.password) 
-    setaddress(data?.address)
+    setstate(data?.state)
     setmobile(data?.mobile)
     setemail(data?.email)
     setage(data?.age) 
     setgender(data?.gender) 
     setheight(data?.height)
     setweight(data?.weight)
-    setchronic(data?.chronic)
-    setdrug(data?.drug) 
-    setbp(data?.bp) 
-    setsideEffect(data?.sideEffect)
-    setremindBPTextMsg(data?.remindBPTextMsg)
+    setzipcode(data?.zipcode);
+    setdiabetes(data?.diabetes);
+    sethematocrit(data?.hematocrit);
+    setcreatinine(data?.creatinine);
+    setcalcium(data?.calcium);
+    setalbumin(data?.albumin);
+    settsh(data?.tsh);
   }, []); 
 
   
@@ -103,7 +109,7 @@ const onSubmit = () => {
   <div className="content-wrapper"> 
     <section className="content-header">
       <h1>
-       Add New patient
+       Edit Patient
       </h1>
       <ol className="breadcrumb">
         <li>
@@ -114,30 +120,22 @@ const onSubmit = () => {
         <li>
           <a href="/patients">Manage patient</a>
         </li>
-        <li className="active">All patient</li>
+        <li className="active">Edit patient</li>
       </ol>
     </section> 
     <section className="content"> 
       <div className="box">
       <div className="box-header with-border"> 
           <div className="box-tools pull-right">
-            {/* <Link
-              to="/patientlist"
-              type="button"
-              className="btn btn-success" 
-              data-toggle="tooltip"
-              title="Add"
-            > */}
-            <Link
+          <Link
               to="/patients"
               type="button"
               className="btn btn-success" 
               data-toggle="tooltip"
-              title="Add"
+              title="Back"
             >
-              <i className="fa fa-eye" />
-              {" View patient"}
-            </Link> 
+              {"Go Back"}
+            </Link>
           </div>
         </div>
 
@@ -153,9 +151,9 @@ const onSubmit = () => {
                 <div className="active tab-pane" id="settings">
                     <form className="form-horizontal">
                       <div className="form-group">
-                        <label htmlFor="inputName" className="col-sm-2 control-label">User Name</label>
+                        <label htmlFor="inputName" className="col-sm-2 control-label">Name</label>
                         <div className="col-sm-10">
-                          <input type="text"  className="form-control" id="inputName" placeholder="" name="fname" value={username} onChange={(e)=>setusername(e.target.value)}/>
+                          <input type="text"  className="form-control" id="inputName" placeholder="" name="fname" value={name} onChange={(e)=>setname(e.target.value)}/>
                           {errors.fname && <span className='validationError'>Required</span>}
                         </div> 
                       </div>
@@ -169,16 +167,16 @@ const onSubmit = () => {
                       </div>
   
                       <div className="form-group">
-                        <label htmlFor="inputName" className="col-sm-2 control-label">Address</label>
+                        <label htmlFor="inputName" className="col-sm-2 control-label">State</label>
                         <div className="col-sm-10">
                         {/* <Editor
                           name="description"
                           onChange={(data) => {
-                            setaddress(data);
+                            setstate(data);
                           }}
                           editorLoaded={editorLoaded}
                         /> */}
-                        <input type="text"  className="form-control" id="inputName" placeholder="" value={address} name="fname" onChange={(e)=>setaddress(e.target.value)}/>
+                        <input type="text"  className="form-control" id="inputName" placeholder="" value={state} name="fname" onChange={(e)=>setstate(e.target.value)}/>
 
                           {errors.lname && <span className='validationError'>Required</span>}
                         </div>
@@ -230,42 +228,69 @@ const onSubmit = () => {
                         <input type="text"  className="form-control" id="inputName" placeholder="" value={weight} name="fname" onChange={(e)=>setweight(e.target.value)}/>
                         </div> 
                       </div>
+                      <div className="form-group">
+                        <label htmlFor="zipcode" className="col-sm-2 control-label">Zipcode</label>
+                        <div className="col-sm-10">
+                          <input type="text"  className="form-control" id="zipcode" placeholder="" value={zipcode} name="zipcode" onChange={(e)=>setzipcode(e.target.value)}/>
+                          {errors.zipcode && <span className='validationError'>Required</span>}
+                        </div> 
+                      </div>
                        <div className="form-group">
-                        <label htmlFor="inputName" className="col-sm-2 control-label">Record chronic disease</label>
+                        <label htmlFor="diabetes" className="col-sm-2 control-label">Diabetes</label>
                         <div className="col-sm-10">
-                          <input type="text"  className="form-control" id="inputName" placeholder="" value={chronic} name="fname" onChange={(e)=>setchronic(e.target.value)}/>
-                          {errors.fname && <span className='validationError'>Required</span>}
-                        </div> 
-                      </div>
-                       <div className="form-group">
-                        <label htmlFor="inputName" className="col-sm-2 control-label">Record drug allergies</label>
-                        <div className="col-sm-10">
-                          <input type="text"  className="form-control" id="inputName" placeholder="" value={drug} name="fname" onChange={(e)=>setdrug(e.target.value)}/>
-                          {errors.fname && <span className='validationError'>Required</span>}
-                        </div> 
-                      </div>
-
-                      <div className="form-group">
-                        <label htmlFor="inputName" className="col-sm-2 control-label">Record bp</label>
-                        <div className="col-sm-10">
-                          <input type="text"  className="form-control" id="inputName" placeholder="" value={bp} name="fname" onChange={(e)=>setbp(e.target.value)}/>
-                          {errors.fname && <span className='validationError'>Required</span>}
+                        <select
+                            class="form-control"
+                            required
+                            id="diabetes"
+                            value={diabetes}
+                            onChange={(e)=>setdiabetes(e.target.value)}>
+                                <option value=''>----Choose one option----</option>
+                                <option value='true'>Yes</option>
+                                <option value='false'>No</option>
+                            {/* {genderData.map(({ value, name }, index) => <option value={name} >{value}</option>)} */}
+                          </select>
+                          {/* <input type="text"  className="form-control" id="diabetes" placeholder="" value={diabetes} name="diabetes" onChange={(e)=>setdiabetes(e.target.value)}/>
+                          {errors.diabetes && <span className='validationError'>Required</span>} */}
                         </div> 
                       </div>
 
                       <div className="form-group">
-                        <label htmlFor="inputName" className="col-sm-2 control-label">Way to communicate side effects</label>
+                        <label htmlFor="hematocrit" className="col-sm-2 control-label">Hematocrit</label>
                         <div className="col-sm-10">
-                          <input type="text"  className="form-control" id="inputName" placeholder="" value={sideEffect} name="fname" onChange={(e)=>setsideEffect(e.target.value)}/>
-                          {errors.fname && <span className='validationError'>Required</span>}
+                          <input type="text"  className="form-control" id="hematocrit" placeholder="" value={hematocrit} name="hematocrit" onChange={(e)=>sethematocrit(e.target.value)}/>
+                          {errors.hematocrit && <span className='validationError'>Required</span>}
                         </div> 
                       </div>
 
                       <div className="form-group">
-                        <label htmlFor="inputName" className="col-sm-2 control-label">Reminder to take bp by text message</label>
+                        <label htmlFor="creatinine" className="col-sm-2 control-label">Creatinine</label>
                         <div className="col-sm-10">
-                          <input type="text"  className="form-control" id="inputName" placeholder="" value={remindBPTextMsg} name="fname" onChange={(e)=>setremindBPTextMsg(e.target.value)}/>
-                          {errors.fname && <span className='validationError'>Required</span>}
+                          <input type="text"  className="form-control" id="creatinine" placeholder="" value={creatinine} name="creatinine" onChange={(e)=>setcreatinine(e.target.value)}/>
+                          {errors.creatinine && <span className='validationError'>Required</span>}
+                        </div> 
+                      </div>
+
+                      <div className="form-group">
+                        <label htmlFor="calcium" className="col-sm-2 control-label">Calcium</label>
+                        <div className="col-sm-10">
+                          <input type="text"  className="form-control" id="calcium" placeholder="" value={calcium} name="calcium" onChange={(e)=>setcalcium(e.target.value)}/>
+                          {errors.calcium && <span className='validationError'>Required</span>}
+                        </div> 
+                      </div>
+
+                      <div className="form-group">
+                        <label htmlFor="albumin" className="col-sm-2 control-label">Albumin</label>
+                        <div className="col-sm-10">
+                          <input type="text"  className="form-control" id="albumin" placeholder="" value={albumin} name="albumin" onChange={(e)=>setalbumin(e.target.value)}/>
+                          {errors.albumin && <span className='validationError'>Required</span>}
+                        </div> 
+                      </div>
+
+                      <div className="form-group">
+                        <label htmlFor="tsh" className="col-sm-2 control-label">TSH</label>
+                        <div className="col-sm-10">
+                          <input type="text"  className="form-control" id="tsh" placeholder="" value={tsh} name="tsh" onChange={(e)=>settsh(e.target.value)}/>
+                          {errors.tsh && <span className='validationError'>Required</span>}
                         </div> 
                       </div>
 

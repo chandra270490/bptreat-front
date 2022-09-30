@@ -6,7 +6,7 @@ import { Logout } from '../action';
 
 export default function Header() {
   const dispatch =  useDispatch()
-  const auth = useSelector(state=>state.auth);  
+  const auth = useSelector(state=>state?.common?.data);
   const navigate = useNavigate();
   const logout=()=>{
     dispatch(Logout());
@@ -55,7 +55,7 @@ export default function Header() {
                 className="user-image"
                 alt="User Image"
               />
-              <span className="hidden-xs">{auth.user.fname} {auth.user.lname}</span>
+              <span className="hidden-xs">{auth.fname} {auth.lname}</span>
             </a>
             <ul className="dropdown-menu">
               {/* User image */}
@@ -67,7 +67,7 @@ export default function Header() {
                   alt="User Image"
                 />
                 <p>
-                {auth.user.fname} {auth.user.lname} - Admin
+                {auth.fname} {auth.lname} - Admin
                 </p>
               </li>
               

@@ -27,7 +27,7 @@ export const GetDiseaseAction=()=>{
 	
 	return async (dispatch)=>{
 		dispatch({type:diseaseStatus.DISEASE_GET_REQUEST});
-		const res = await axios.post(`/get-disease/`);
+		const res = await axios.get(`/get-disease/`);
 		console.log(res.data)
 		if(res.status===200){    
 			const diseases = res.data

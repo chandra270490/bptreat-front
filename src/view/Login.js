@@ -3,6 +3,7 @@ import {Link,Redirect} from 'react-router-dom'
 import {useDispatch,useSelector} from "react-redux";
 import {LoginPage} from "../action";
 import { Toaster } from 'react-hot-toast';
+// import {logo} from '../../public/logo.png';
 
 export default function Login() {
 
@@ -27,7 +28,7 @@ export default function Login() {
   <div className="login-logo">
     <a href="../../index2.html">
       <a aria-current="page" className="MobileHeaderTop__logo active" href="#">
-        <h2>Medical Admin Panel</h2>
+        <img src="dist/img/logo.png" style={{height:"100px"}}></img>
       </a>
     </a>
   </div>
@@ -65,7 +66,8 @@ export default function Login() {
           <button 
           type="button" 
           className="btn btn-warning btn-block btn-flat"
-          style={{backgroundColor: "#277ae1db", borderColor: "#0b5fe0", borderRadius: "7px"}}
+          style={{'backgroundColor': '#DF1721','borderColor': '#690E14', borderRadius: "7px"}}
+          // style={{backgroundColor: "#277ae1db", borderColor: "#0b5fe0", borderRadius: "7px"}}
           onClick={(e)=>loginData()}>
             Sign In
           </button>

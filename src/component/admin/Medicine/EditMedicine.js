@@ -15,7 +15,7 @@ export default function EditMedicine() {
 const dispatch =  useDispatch();
 const {id} = useParams();
 const { formState: { errors } } = useForm();
-const medicineInfo = useSelector(state=>state?.medicine?.data);
+const medicineInfo = useSelector(state=>state?.medicine?.data?.data);
 const setMedicine = medicineInfo.find(data => data._id === id );
 
 const [name,setName] = useState(setMedicine?.name);
@@ -42,7 +42,7 @@ const onSubmit = () => {
     dispatch(GetDiseaseAction())
   }, []);
 
-  const diseaseData = useSelector(state=>state?.disease?.data)
+  const diseaseData = useSelector(state=>state?.disease?.data?.data)
 
 	return (
     <div className="sidebar-mini skin-green-light">

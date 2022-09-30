@@ -39,6 +39,7 @@ const onSubmit = () => {
     address
   }
    dispatch(EditProfileAction(data));
+   dispatch(GetAdminProfileAction(id));
 }
 
   const genderData = [

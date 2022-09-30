@@ -10,7 +10,7 @@ import { Toaster } from 'react-hot-toast';
 
 export default function DiseaseList() {
   const auth = useSelector(state=>state.auth);
-  const diseaseData = useSelector(state=>state?.disease?.data)
+  const diseaseData = useSelector(state=>state?.disease?.data?.data)
   const dispatch = useDispatch();
   
   useEffect(async()=>{
@@ -103,7 +103,7 @@ export default function DiseaseList() {
                   <span className="text-lowercase fs-1">{dt?.severity}</span>
                 </td>
                 <td>
-                  <button className="btn btn-default" onClick={()=>deleteDisease(dt?._id)}>
+                  <button title="Delete" className="btn btn-default" onClick={()=>deleteDisease(dt?._id)}>
                     <i className="fa fa-trash"></i>
                   </button>
                   {" "} 
@@ -111,7 +111,7 @@ export default function DiseaseList() {
                   {/* <Link to={"/editpatient/"+auth?.user?.role+"/ "+auth?.user?._id+"/"+dt?._id} className="btn btn-default">
                     <i className="fa fa-edit"></i>
                   </Link> */}
-                  <Link to={"/edit-disease/"+dt?._id} className="btn btn-default">
+                  <Link title="Edit" to={"/edit-disease/"+dt?._id} className="btn btn-default">
                     <i className="fa fa-edit"></i>
                   </Link>
                 </td>

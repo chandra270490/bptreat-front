@@ -4,16 +4,23 @@ import Header from '../header/Header';
 import Sidebar from '../sidebar/Sidebar';
 import Tool from '../sidebar/Tool';
 import Footer from '../footer/Footer';
-import {GetPatientAction,GetVitalAction,GetDiseaseAction,GetMedicineAction} from "../action"
+import {
+		GetPatientAction,
+		GetVitalAction,GetDiseaseAction,
+		GetMedicineAction,
+		GetAdminProfileAction } from "../action"
 import {useDispatch,useSelector} from "react-redux";
 
 export default function DashboardPage() {
 	const dispatch = useDispatch();
+	const adminId = useSelector(state=>state?.auth?.user);
+	const id = adminId?._id;
 	useEffect(()=>{
 		dispatch(GetPatientAction())
 		dispatch(GetVitalAction())
 		dispatch(GetDiseaseAction())
 		dispatch(GetMedicineAction())
+		dispatch(GetAdminProfileAction(id))
 	 },[])
 	const auth = useSelector(state=>state.auth);
 	return (

@@ -8,6 +8,7 @@ import AdminRouter from "./privateRoute/PrivateRoute";
 import PatientList from './component/admin/PatientList';
 import AddPatient from './component/admin/AddPatient';
 import EditPatient from './component/admin/EditPatient';
+import ViewPatient from './component/admin/ViewPatient';
 
 import ManageVitalList from './component/admin/ManageVitalList';
 import AddVital from './component/admin/AddVital';
@@ -42,6 +43,7 @@ export default function App() {
          <Route path="/patients" element={<AdminRouter redirectTo="/"><PatientList/></AdminRouter>}/>
          <Route path="/addpatient" element={<AdminRouter redirectTo="/"><AddPatient/></AdminRouter>}/>
          <Route path="/editpatient/:role/:userId/:patientId" element={<AdminRouter redirectTo="/"><EditPatient/></AdminRouter>}/>
+         <Route path="/viewpatient/:patientId" element={<AdminRouter redirectTo="/"><ViewPatient/></AdminRouter>}/>
 
          <Route path="/vitals" element={<AdminRouter redirectTo="/"><ManageVitalList/></AdminRouter>}/>
          <Route path="/addvital" element={<AdminRouter redirectTo="/"><AddVital/></AdminRouter>}/>

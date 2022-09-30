@@ -13,7 +13,7 @@ export default function EditDisease() {
   const dispatch =  useDispatch();
   const {id} = useParams();
   const { formState: { errors } } = useForm();
-  const diseaseInfo = useSelector(state=>state?.disease?.data);
+  const diseaseInfo = useSelector(state=>state?.disease?.data?.data);
   const setDisease = diseaseInfo.find(data => data._id === id );
 
 const [name,setName] = useState(setDisease?.name);
