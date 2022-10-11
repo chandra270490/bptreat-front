@@ -6,6 +6,7 @@ import DiseaseReducer from './DiseaseReducer';
 import MedicineReducer from './MedicineReducer';
 import {authStatus} from '../action/Status';
 import CommonReducer from './CommonReducer';
+import FaqReducer from './FaqReducer';
 
 const appReducer =combineReducers({
       auth:AuthReducer,
@@ -13,7 +14,8 @@ const appReducer =combineReducers({
       vital: VitalReducer,
       disease: DiseaseReducer,
       medicine: MedicineReducer,
-      common: CommonReducer
+      common: CommonReducer,
+      faq: FaqReducer
 });
 
 const rootReducer = (state, action) => {

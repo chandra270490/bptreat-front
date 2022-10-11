@@ -5,10 +5,11 @@ import Dashboard from './view/Dashboard';
 import Login from './view/Login';
 import Reg from './view/Reg';
 import AdminRouter from "./privateRoute/PrivateRoute";
-import PatientList from './component/admin/PatientList';
-import AddPatient from './component/admin/AddPatient';
-import EditPatient from './component/admin/EditPatient';
-import ViewPatient from './component/admin/ViewPatient';
+import PatientList from './component/admin/Patient/PatientList';
+import AddPatient from './component/admin/Patient/AddPatient';
+import EditPatient from './component/admin/Patient/EditPatient';
+import ViewPatient from './component/admin/Patient/ViewPatient';
+import ViewPatientDiseases from './component/admin/Patient/ViewDiseases';
 
 import ManageVitalList from './component/admin/ManageVitalList';
 import AddVital from './component/admin/AddVital';
@@ -21,6 +22,11 @@ import EditDisease from './component/admin/Diseases/EditDisease';
 import ManageMedicine from './component/admin/Medicine/ManageMedicine';
 import AddMedicine from './component/admin/Medicine/AddMedicine';
 import EditMedicine from './component/admin/Medicine/EditMedicine';
+
+import ManageFaq from './component/admin/Faq/ManageFaq';
+import AddFaq from './component/admin/Faq/AddFaq';
+import EditFaq from './component/admin/Faq/EditFaq';
+
 import Profile from './component/admin/Profile';
 
 export default function App() {
@@ -44,6 +50,7 @@ export default function App() {
          <Route path="/addpatient" element={<AdminRouter redirectTo="/"><AddPatient/></AdminRouter>}/>
          <Route path="/editpatient/:role/:userId/:patientId" element={<AdminRouter redirectTo="/"><EditPatient/></AdminRouter>}/>
          <Route path="/viewpatient/:patientId" element={<AdminRouter redirectTo="/"><ViewPatient/></AdminRouter>}/>
+         <Route path="/view-patient-diseases/:patientId" element={<AdminRouter redirectTo="/"><ViewPatientDiseases/></AdminRouter>}/>
 
          <Route path="/vitals" element={<AdminRouter redirectTo="/"><ManageVitalList/></AdminRouter>}/>
          <Route path="/addvital" element={<AdminRouter redirectTo="/"><AddVital/></AdminRouter>}/>
@@ -58,6 +65,10 @@ export default function App() {
          <Route path="/medicines" element={<AdminRouter redirectTo="/"><ManageMedicine/></AdminRouter>}/>
          <Route path="/add-medicine" element={<AdminRouter redirectTo="/"><AddMedicine/></AdminRouter>}/>
          <Route path="/edit-medicine/:id" element={<AdminRouter redirectTo="/"><EditMedicine/></AdminRouter>}/>
+
+         <Route path="/faqs" element={<AdminRouter redirectTo="/"><ManageFaq/></AdminRouter>}/>
+         <Route path="/add-faq" element={<AdminRouter redirectTo="/"><AddFaq/></AdminRouter>}/>
+         <Route path="/edit-faq/:id" element={<AdminRouter redirectTo="/"><EditFaq/></AdminRouter>}/>
        </Routes>
    </div>
   )

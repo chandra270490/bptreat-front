@@ -1,10 +1,10 @@
 import React,{useEffect} from 'react'
 import {Link} from "react-router-dom";
-import Header from '../../header/Header';
-import Sidebarr from '../../sidebar/Sidebar';
-import {GetPatientAction,DeletePatientAction} from "../../action"
-import Tool from '../../sidebar/Tool';
-import Footer from '../../footer/Footer';
+import Header from '../../../header/Header';
+import Sidebarr from '../../../sidebar/Sidebar';
+import {GetPatientAction,DeletePatientAction} from "../../../action"
+import Tool from '../../../sidebar/Tool';
+import Footer from '../../../footer/Footer';
 import {useSelector,useDispatch} from "react-redux";
 import { Toaster } from 'react-hot-toast';
 
@@ -86,7 +86,7 @@ export default function ProductList() {
         	  	</tr>
         	  </thead>
         	  <tbody>
-            {patientData?.length>0  &&patientData?.map((dt)=>(
+            {patientData?.length>0  && patientData?.map((dt)=>(
               <tr>
                 <td><input type="checkbox"/></td>
                 <td>
@@ -122,9 +122,9 @@ export default function ProductList() {
                   </Link>
                   {" "} 
                   {" "}
-                  {/* <Link to={"/viewpatient/"+dt?._id} className="btn btn-default">
+                  <Link title="View Diseases" to={"/view-patient-diseases/"+dt?._id} className="btn btn-default">
                   <i className="fa fa-virus" />
-                  </Link> */}
+                  </Link>
                   
                 </td>
               </tr>

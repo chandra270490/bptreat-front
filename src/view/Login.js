@@ -28,7 +28,7 @@ export default function Login() {
   <div className="login-logo">
     <a href="../../index2.html">
       <a aria-current="page" className="MobileHeaderTop__logo active" href="#">
-        <img src="dist/img/logo.png" style={{height:"100px"}}></img>
+        <img src="dist/img/logo2.png" style={{height:"100px"}}></img>
       </a>
     </a>
   </div>

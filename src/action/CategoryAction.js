@@ -1,6 +1,15 @@
-import {categoryStatus,cmsStatus} from "./Status";
+import {categoryStatus,cmsStatus, BPStatus} from "./Status";
 import axios from "../helper/axios";
 import toast from 'react-hot-toast';
+
+// export const getAdminToken=()=>{
+// 	const token = useSelector((state) => state?.auth?.token);
+
+// 	const config = {
+// 		headers: { Authorization: `Bearer ${token}` }
+// 	};
+// }
+
 
 export const  GetCategoryAction=(userLogin)=>{
 	 
@@ -150,6 +159,31 @@ export const EditPatientAction=(data)=>{
 			const categories= res.data
 			dispatch({
 				type:cmsStatus.COUPON_UPDATE_SUCCESS,
+				payload:{
+					categories
+				}
+			})
+			toast.success('Patient updated successfully');
+
+		}else{
+		if(res.status===201){
+			toast.error("Patient email already exists.");
+			console.log(res.data);
+		}
+	    }
+	}
+}
+
+export const GetPatientBPDetailsAction=(data,ab)=>{
+	console.log("jyjtjdhsgdfsX",data)
+	return async (dispatch)=>{
+		dispatch({type:BPStatus.BP_GET_REQUEST});
+		const res = await axios.get(`/get-record/${data}`,data);
+		console.log(res.data)
+		if(res.status===200){    
+			const categories= res.data
+			dispatch({
+				type:BPStatus.BP_GET_SUCCESS,
 				payload:{
 					categories
 				}

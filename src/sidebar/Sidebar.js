@@ -56,7 +56,7 @@ export default function Sidebar() {
 
         <li>
           <Link to="/home">
-            <i className="fa fa-dashboard" /> <span>Dashboard</span>
+            <i className="fa fa-home" /> <span>Dashboard</span>
             <span className="pull-right-container">
               {/* <small className="label pull-right bg-green">new</small> */}
             </span>
@@ -71,13 +71,7 @@ export default function Sidebar() {
           </Link>
         </li>
 
-        {/* <li>
-          <Link to="/vitals">
-            <i className="fa fa-heartbeat" /> <span>Manage Vitals </span>
-            <span className="pull-right-container">
-            </span>
-          </Link>
-        </li> */}
+        
 
         {/* <li>
           <Link to="/users">
@@ -96,6 +90,13 @@ export default function Sidebar() {
         <li>
           <Link to="/medicines">
             <i className="fa fa-medkit" /> <span>Manage Medicines </span>
+            <span className="pull-right-container">
+            </span>
+          </Link>
+        </li>
+        <li>
+          <Link to="/faqs">
+            <i className="fa fa-file" /> <span>Manage CMS </span>
             <span className="pull-right-container">
             </span>
           </Link>

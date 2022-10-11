@@ -1,10 +1,10 @@
 import React, {useEffect,useState} from 'react'
 import {Link, useNavigate} from "react-router-dom";
-import Header from '../../header/Header';
-import Sidebarr from '../../sidebar/Sidebar';
-import Tool from '../../sidebar/Tool';
-import Footer from '../../footer/Footer';
-import {AddPatientAction} from "../../action";
+import Header from '../../../header/Header';
+import Sidebarr from '../../../sidebar/Sidebar';
+import Tool from '../../../sidebar/Tool';
+import Footer from '../../../footer/Footer';
+import {AddPatientAction} from "../../../action";
 import {useDispatch,useSelector} from "react-redux";
 import { useForm } from "react-hook-form";
 import { Toaster } from 'react-hot-toast';
